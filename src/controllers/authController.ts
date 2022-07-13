@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { unprocessableError } from "../utils/errorUtils.js";
-import {testeService} from "../services/services.js"
+import {testeService, signupService, loginService} from "../services/services.js"
+
 
 
 export async function signupController(req:Request,res:Response){
@@ -8,13 +9,19 @@ export async function signupController(req:Request,res:Response){
 
     console.log(password)
     console.log(confirmPassword)
+    // const result = await testeService(password, email)
+    const result = await signupService(req.body) 
 
-    
-    const result = await testeService(password, email)
-    
     res.send(result)
 }
 
-export function loginController(req:Request,res:Response) {
-    res.status(200).send("login")
+export async function loginController(req:Request,res:Response) {
+    const {email, password} = req.body
+
+    const result = await loginService(req.body)
+
+    res.send(result)
+
 }
+
+//const validPass = await bcrypt.compare(password, user.password);
