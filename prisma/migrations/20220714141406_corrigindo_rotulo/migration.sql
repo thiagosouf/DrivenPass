@@ -1,0 +1,8 @@
+/*
+  Warnings:
+
+  - Added the required column `rotulo` to the `credenciais` table without a default value. This is not possible if the table is not empty.
+
+*/
+-- AlterTable
+ALTER TABLE "credenciais" ADD COLUMN     "rotulo" TEXT NOT NULL;

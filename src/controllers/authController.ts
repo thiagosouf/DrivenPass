@@ -25,3 +25,4 @@ export async function loginController(req:Request,res:Response) {
 }
 
 //const validPass = await bcrypt.compare(password, user.password);
+ 

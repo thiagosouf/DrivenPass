@@ -18,6 +18,8 @@ model credenciais {
   id      Int    @id @default(autoincrement())
   userId  Int
   titulo  String
+  nome    String
+  rotulo  String
   url     String
   usuario String
   senha   String
