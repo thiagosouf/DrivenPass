@@ -9,6 +9,6 @@ const credentialsRouter = Router();
 credentialsRouter.post("/create", createPass)
 credentialsRouter.get("/listpass", listPass);
 credentialsRouter.get("/listpass/:id", listPassById);
-credentialsRouter.delete("/delete/:id", deletePass)
+credentialsRouter.delete("/deletepass/:id", deletePass)
 
 export default credentialsRouter;

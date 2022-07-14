@@ -72,18 +72,29 @@ export async function findAllCredentials(userId:number){
     const result = await client.credenciais.findMany({
         where: {userId}
     })
+    if(!result) return result
     for(let i=0;i<result.length;i++){
         result[i].senha = cryptr.decrypt(result[i].senha);
     }
 
-    console.log(result)
+    return result
 }
 
-// export async function findCredentialById(userId:number, id:number){
-//     return await client.credenciais.findUnique({
-//         where:{AND:[
-//                 {userId},
-//                 {id}
-//             ]}
-//         })
-// }
+export async function findCredentialById(userId:number, id:number){
+    const result = await client.credenciais.findFirst({
+        where:{userId,id}
+    })
+    if(!result) return result
+    console.log(result)
+    result.senha = cryptr.decrypt(result.senha);
+    return result
+    }
+
+export async function deleteCredentialById(userId:number, id:number){
+    const result = await findCredentialById(userId,id)
+    if(!result) return result
+    const result2 = await client.credenciais.delete({
+        where:{id}
+    })
+    return result2
+}
