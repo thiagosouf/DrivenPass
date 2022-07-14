@@ -76,7 +76,6 @@ export async function findCredentialById(idPass:number, token:string) {
     return findPass
 }
 
-
 export async function deleteCredentialById(idPass:number, token:string){
     const userId = validToken(token)
     const deletePass = await repo.deleteCredentialById(userId, idPass)

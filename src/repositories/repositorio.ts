@@ -25,6 +25,10 @@ export interface Credential{
     password: string
 }
 
+export interface Notes{
+    titulo: string,
+    nota: string
+}
 
 
 export async function findUserByEmail(email:string){
@@ -91,10 +95,10 @@ export async function findCredentialById(userId:number, id:number){
     }
 
 export async function deleteCredentialById(userId:number, id:number){
-    const result = await findCredentialById(userId,id)
-    if(!result) return result
-    const result2 = await client.credenciais.delete({
+    const findCredential = await findCredentialById(userId,id)
+    if(!findCredential) return findCredential
+    const result = await client.credenciais.delete({
         where:{id}
     })
-    return result2
+    return result
 }
