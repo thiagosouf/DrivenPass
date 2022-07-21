@@ -217,12 +217,6 @@ export async function deleteCardById(userId:number, id:number){
 
 //wifi
 
-export async function findWifiByTitulo(titulo:string, userId:number){
-    return await client.wifis.findFirst({
-        where: {titulo,userId}
-    })
-}
-
 export async function createWifi(wifisData:Wifis ,userId:number){
     const {titulo, nome, senha} = wifisData
     const encryptSenha = cryptr.encrypt(senha);
@@ -262,4 +256,4 @@ export async function deleteWifiById(userId:number, id:number){
         where:{id}
     })
     return result
-}
+} 

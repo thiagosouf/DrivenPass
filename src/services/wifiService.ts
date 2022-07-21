@@ -4,9 +4,6 @@ import validToken from "../utils/utils.js"
 
 export async function createWifisService(wifisData:repo.Wifis, token:string){
     const userId = validToken(token)
-    const findWifi = await repo.findWifiByTitulo(wifisData.titulo,userId)                                 
-    if(findWifi)
-        throw conflictError()
     const addWifi = await repo.createWifi(wifisData, userId)
     if(!addWifi)
         throw unprocessableError()

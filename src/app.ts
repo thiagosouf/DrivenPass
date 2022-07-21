@@ -10,7 +10,4 @@ app.use(cors());
 app.use(routers);
 app.use(errorHandlerMiddleware);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Running on port ${PORT}`);
-});
+export default app;
